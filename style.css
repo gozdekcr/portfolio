@@ -1,0 +1,30 @@
+body{
+  font-family: Nunito;
+}
+
+.site-greeting {
+  color:rgb(224, 176, 255);
+  text-align: center;
+  font-size: 14px;
+  margin-top: 55px;
+  margin-bottom: 5px;
+}
+
+.site-head {
+  text-align: center;
+  font-weight: bold;
+  font-size: 48px;
+  width: 600px;
+  margin-left: 230px;
+  margin-bottom:5px;
+  margin-top: 5px;
+}
+
+.mia {
+  color: rgb(129, 133, 137);
+  font-size: 13px;
+  text-align:center;
+  margin-right:345px;
+  margin-left:345px;
+  margin-top:0;
+}
