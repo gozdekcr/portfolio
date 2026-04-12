@@ -1,4 +1,4 @@
 # portfolio
 <div>
-  personal portfolio site
+  Personal portfolio website built with HTML and CSS.
 </div>
