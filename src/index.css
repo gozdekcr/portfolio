@@ -1,42 +1,142 @@
 @import 'tailwindcss';
 
 @theme {
-  --color-bg: #0b0a0f;
-  --color-surface: #131316;
-  --color-ink: #e7e5ea;
-  --color-muted: #8a8791;
-  --color-lilac: #b8a9d9;
-  --color-lilac-2: #c4b5fd;
-  --color-border: rgba(255, 255, 255, 0.08);
-  --font-sans: 'Inter', system-ui, sans-serif;
+  --color-brand: #9047ff;
+  --color-brand-deep: #6e2bd9;
+  --color-lav: #b99aff;
+  --color-lav-soft: #ede4ff;
+  --color-lav-mist: #f5f0ff;
+  --color-page: #fafafc;
+  --color-ink: #1b1530;
+  --color-ink-soft: #4d4566;
+  --color-night: #0b0912;
+  --font-sans: 'Shantell Sans', ui-rounded, system-ui, sans-serif;
+
+  --animate-float: float 6s ease-in-out infinite;
+  --animate-twinkle: twinkle 2.6s ease-in-out infinite;
+
+  @keyframes float {
+    0%,
+    100% {
+      transform: translateY(0);
+    }
+    50% {
+      transform: translateY(-12px);
+    }
+  }
+  @keyframes twinkle {
+    0%,
+    100% {
+      opacity: 0.25;
+      transform: scale(0.8);
+    }
+    50% {
+      opacity: 1;
+      transform: scale(1);
+    }
+  }
 }
 
 @layer base {
-  * {
-    box-sizing: border-box;
+  html {
+    background: var(--color-page);
+    -webkit-text-size-adjust: 100%;
   }
 
-  html {
-    scroll-behavior: auto;
-    background: var(--color-bg);
+  @media (prefers-reduced-motion: no-preference) {
+    html {
+      scroll-behavior: smooth;
+    }
   }
 
   body {
-    background: var(--color-bg);
+    background: var(--color-page);
     color: var(--color-ink);
     font-family: var(--font-sans);
-    overflow-x: hidden;
+    font-weight: 400;
+    overflow-x: clip;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  h1,
+  h2,
+  h3,
+  h4 {
+    font-weight: 700;
+  }
+
+  section[id] {
+    scroll-margin-top: 92px;
   }
 
   ::selection {
-    background: var(--color-lilac);
-    color: #0b0a0f;
+    background: var(--color-lav);
+    color: var(--color-ink);
   }
 
   :focus-visible {
-    outline: 2px solid var(--color-lilac);
+    outline: 3px solid var(--color-brand);
     outline-offset: 3px;
+    border-radius: 12px;
   }
+
+  .on-dark :focus-visible {
+    outline-color: var(--color-lav);
+  }
+}
+
+@utility pill {
+  @apply inline-flex items-center justify-center gap-2 rounded-full font-bold transition-[background-color,transform,box-shadow] duration-200 select-none;
+}
+@utility pill-brand {
+  @apply pill bg-brand text-white shadow-[0_6px_20px_-6px_rgba(144,71,255,0.6)] hover:bg-brand-deep;
+}
+@utility card {
+  @apply rounded-3xl bg-white shadow-[0_10px_30px_-12px_rgba(64,32,128,0.18)] ring-1 ring-[#ece6f8];
+}
+
+@utility wiggle-hover {
+  &:hover .wiggle-target {
+    animation: wiggle 0.5s ease-in-out;
+  }
+}
+
+@keyframes wiggle {
+  0%,
+  100% {
+    transform: rotate(0);
+  }
+  25% {
+    transform: rotate(-8deg);
+  }
+  50% {
+    transform: rotate(6deg);
+  }
+  75% {
+    transform: rotate(-3deg);
+  }
+}
+
+@keyframes ring-pulse {
+  0% {
+    transform: scale(1);
+    opacity: 0.6;
+  }
+  100% {
+    transform: scale(2.2);
+    opacity: 0;
+  }
+}
+
+.animate-ring-pulse {
+  animation: ring-pulse 1.8s ease-out infinite;
+}
+
+.no-scrollbar {
+  scrollbar-width: none;
+}
+.no-scrollbar::-webkit-scrollbar {
+  display: none;
 }
 
 @media (prefers-reduced-motion: reduce) {
@@ -50,8 +150,23 @@
   }
 }
 
-.glass {
-  background: rgba(255, 255, 255, 0.025);
-  border: 1px solid var(--color-border);
-  backdrop-filter: blur(12px);
+.hero-bg {
+  background: linear-gradient(180deg, #050507 0%, #0d0a17 30%, #3a2d63 58%, #8b76cf 80%, #b9a3f5 100%);
+}
+@media (min-width: 768px) {
+  .hero-bg {
+    background: linear-gradient(90deg, #050507 0%, #0d0a17 22%, #3a2d63 45%, #7d68c0 68%, #b9a3f5 100%);
+  }
+}
+
+/* soft edge so the hero illustration blends into the gradient */
+.hero-fade {
+  -webkit-mask-image: linear-gradient(to bottom, transparent 0%, #000 22%);
+  mask-image: linear-gradient(to bottom, transparent 0%, #000 22%);
+}
+@media (min-width: 768px) {
+  .hero-fade {
+    -webkit-mask-image: linear-gradient(to right, transparent 0%, #000 28%);
+    mask-image: linear-gradient(to right, transparent 0%, #000 28%);
+  }
 }
