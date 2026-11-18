@@ -66,14 +66,14 @@ export default function Hero() {
             initial={{ opacity: 0, x: 40 }}
             animate={{ opacity: 1, x: 0 }}
             transition={{ type: 'spring', stiffness: 60, damping: 18, delay: 0.3 }}
-            className="relative md:absolute md:inset-y-0 md:right-0 md:w-[62%]"
+            className="relative md:absolute md:inset-y-0 md:right-0 md:w-[66%]"
           >
             <img
               src={src}
               alt={hero.imageAlt}
               onError={() => setImgOk(false)}
               fetchPriority="high"
-              className="hero-fade block h-auto w-full object-cover object-center md:h-full"
+              className="hero-fade block h-auto w-full object-cover object-right md:h-full"
             />
           </motion.div>
         )}
