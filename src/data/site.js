@@ -20,7 +20,7 @@ export const hero = {
   headline: ["Hello! I'm", 'Gözde'],
   cta: { label: 'My Works', href: '#projects' },
   text: 'I build products and keep sharpening my skills in AI, backend development and data science.',
-  image: 'images/hero.webp', // relative to /public
+  image: 'images/hero-illustration.webp', // relative to /public
   imageAlt:
     'Pixel-art illustration of Gözde coding at a cozy desk with three monitors, a plant, books and a sleeping orange cat',
 }
